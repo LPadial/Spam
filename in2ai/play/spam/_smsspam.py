@@ -18,13 +18,17 @@ from sklearn.linear_model import LogisticRegression
 from sklearn import metrics
 from keras.models import Sequential
 from keras import layers
-
 from sklearn.model_selection import StratifiedKFold
 import os.path
+import os
+from dotenv import load_dotenv
+load_dotenv()
+
+
 
 URL_SMSSPAM = "https://archive.ics.uci.edu/ml/machine-learning-databases/00228/"
-DATA_HOME = 'C:/Users/laura/Desktop/Universidad/TMA/data'
-PATH_UNZIP = 'C:/Users/laura/Desktop/Universidad/TMA/data/smsspam'
+DATA_HOME = os.getenv("PATH_DATA")
+PATH_UNZIP = DATA_HOME + '/smsspam'
 
 
 def fetch_smsspam(data_home=DATA_HOME):

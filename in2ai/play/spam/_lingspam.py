@@ -10,7 +10,9 @@ from ._core import DocEmbeddingVectorizer
 
 
 import pandas as pd
+import os
 import os.path
+from dotenv import load_dotenv
 from sklearn.pipeline import Pipeline
 from sklearn.metrics import accuracy_score
 from sklearn.naive_bayes import BernoulliNB
@@ -18,10 +20,12 @@ from sklearn.feature_selection import SelectKBest
 from sklearn.feature_selection import mutual_info_classif
 from sklearn.feature_extraction.text import CountVectorizer
 
+load_dotenv()
+
 URL_LINGSPAM = 'http://nlp.cs.aueb.gr/software_and_datasets/lingspam_public.tar.gz'
+PATH_DATA = os.getenv("PATH_DATA")
 
-
-def fetch_lingspam(data_home='C:/Users/laura/Desktop/Universidad/TMA/data'):
+def fetch_lingspam(data_home=PATH_DATA):
     """Load the Ling-Spam data-set from AUEB (classification).
     Download it if necessary.
     

@@ -9,9 +9,12 @@ from ._spambase import fetch_spambase
 from ._spambase import create_pipeline_spambase
 from ._smsspam import fetch_smsspam
 from ._smsspam import create_pipeline_smsspam
+from ._spamassassin import fetch_spamassassin
+from ._spamassassin import create_pipelines_spamassassin
 
 
 from ._core import StopWordRemovalTransformer
 from ._core import LemmatizeTransformer
 from ._core import DocEmbeddingVectorizer
+
 

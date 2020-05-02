@@ -1,0 +1,3 @@
+To create a .env file in the root of project with the follow content:
+
+PATH_DATA = { "ABSOLUTE PATH WHERE YOU WANT TO SAVE THE DOWNLOADED FILES " }
