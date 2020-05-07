@@ -11,7 +11,8 @@ from ._smsspam import fetch_smsspam
 from ._smsspam import create_pipeline_smsspam
 from ._spamassassin import fetch_spamassassin
 from ._spamassassin import create_pipelines_spamassassin
-
+from ._trecspam import fetch_trecspam
+from ._trecspam import create_pipelines_trecspam
 
 from ._core import StopWordRemovalTransformer
 from ._core import LemmatizeTransformer
