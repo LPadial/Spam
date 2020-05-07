@@ -6,13 +6,11 @@ import numpy as np
 import re
 
 def test_fetch():
-    #try:
-    df = fetch_trecspam()
-    print(df.values.shape)
-    
-    '''except Exception as e:
+    try:
+        df = fetch_trecspam()
+    except Exception as e:
         print(e)
-    assert((10751, 2) == df.values.shape)'''
+    assert((226257, 2) == df.values.shape)
 
 def test_basemodel():
     """Test the sample pipelines for TrecSpam.
