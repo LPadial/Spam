@@ -1,3 +1,9 @@
 To create a .env file in the root of project with the follow content:
 
 PATH_DATA = { "ABSOLUTE PATH WHERE YOU WANT TO SAVE THE DOWNLOADED FILES " }
+
+Execute the files from project root with the command
+python -m in2ai.play.spam.tests.test_lingspam
+
+Not write .py in the end of line
+Make sure the path from where the command is executed contains the 'in2ai' folder
