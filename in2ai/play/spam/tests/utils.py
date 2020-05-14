@@ -1,5 +1,5 @@
-import re
-match = re.search(r'^((?:sp|h)am) .*?inmail\.(\d{1,5})$', 'spam ../data/inmail.123456')
-print(match)
-#Spam inmail.
-#((?:Sp|h)am) .*?inmail\\(\\d{1,5}).
+from sklearn.metrics import confusion_matrix
+def tn(y_true, y_pred): return confusion_matrix(y_true, y_pred)[0, 0]
+def fp(y_true, y_pred): return confusion_matrix(y_true, y_pred)[0, 1]
+def fn(y_true, y_pred): return confusion_matrix(y_true, y_pred)[1, 0]
+def tp(y_true, y_pred): return confusion_matrix(y_true, y_pred)[1, 1]

@@ -14,6 +14,8 @@ from nltk.corpus import stopwords
 #import matplotlib.pyplot as plt
 from sklearn.model_selection import train_test_split
 from sklearn.feature_extraction.text import CountVectorizer
+from sklearn.feature_selection import SelectKBest
+from sklearn.feature_selection import mutual_info_classif
 from sklearn.linear_model import LogisticRegression
 from sklearn import metrics
 from keras.models import Sequential
@@ -23,6 +25,9 @@ import os.path
 import os
 from dotenv import load_dotenv
 load_dotenv()
+from ._core import StopWordRemovalTransformer
+from ._core import LemmatizeTransformer
+from ._core import DocEmbeddingVectorizer
 
 
 
@@ -58,4 +63,15 @@ def create_pipeline_smsspam():
     """
     vecz = ('vect', CountVectorizer())
     logr = ('classifier', LogisticRegression())
-    return Pipeline([vecz,logr])
+    stop = ('stop', StopWordRemovalTransformer())
+    lemma = ('lemma', LemmatizeTransformer())
+    binz = ('binarizer', CountVectorizer())
+    we = ('document embedding', DocEmbeddingVectorizer())
+    sel = ('fsel', SelectKBest(score_func=mutual_info_classif, k=100))
+    clf = ('cls', BernoulliNB()) # Binary features in the original paper. 
+    return Pipeline([vecz,logr]),    \
+        Pipeline([binz, sel, clf]),   \
+            Pipeline([stop, binz, sel, clf]),  \
+                Pipeline([lemma, binz, sel, clf]),     \
+                    Pipeline([stop, lemma, binz, sel, clf]), \
+                        Pipeline([stop, lemma, we, sel, clf])
